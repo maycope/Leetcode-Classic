@@ -1,0 +1,43 @@
+# 2.2插入法链表排序
+
+## Question
+Sort a linked list using insertion sort.
+
+## Thinking
+1. 对排序算法有基础的掌握。
+2. 对链表的插入中节点的变化需要多加练习。
+
+
+## Code
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ *2 3 1 4}
+ */
+public class Solution {
+    public ListNode insertionSortList(ListNode head) {
+        ListNode ptr=new ListNode(0);
+        ListNode temp=head;
+        ListNode p=ptr;
+        while(temp!=null){
+            ListNode next=temp.next;
+            p=ptr;
+            while(p.next!=null && p.next.val<temp.val){
+                p=p.next;
+            }
+            temp.next=p.next;
+            p.next=temp;
+            temp=next;
+            
+        }
+        return ptr.next;
+    }
+}
+```
